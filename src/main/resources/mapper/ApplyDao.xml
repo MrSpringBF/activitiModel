@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.allblue.modules.dev.dao.ApplyDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.allblue.modules.dev.entity.ApplyEntity" id="applyMap">
+        <result property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="processInstanceId" column="process_instance_id"/>
+        <result property="content" column="content"/>
+        <result property="createTime" column="create_time"/>
+        <result property="status" column="status"/>
+        <association property="chineseName" javaType="String" column="user_id" select="selectChineseName"/>
+    </resultMap>
+    <select id="selectChineseName" resultType="string">
+        select chinese_name from sys_user where user_id =#{id}
+    </select>
+</mapper>

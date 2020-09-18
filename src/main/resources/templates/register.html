@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="shortcut icon" href="/statics/images/onepiece.jpg">
+    <meta charset="UTF-8">
+    <title>管理系统</title>
+
+    <script type="text/javascript" src="/statics/login/js/jquery-3.3.1.min.js"></script>
+
+    <!-- Loading Bootstrap -->
+    <link href="/statics/login/css/vendor/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Loading Flat UI Pro -->
+    <link href="/statics/login/css/flat-ui.css" rel="stylesheet">
+
+    <!-- Loading Flat UI Pro -->
+    <link href="/statics/login/css/animate.css" rel="stylesheet">
+
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700'
+          rel='stylesheet' type='text/css'>
+    <script type='text/javascript' src='/statics/login/scripts/particles.js'></script>
+    <script src="/statics/login/scripts/bganimation.js"></script>
+    <!--<script type='text/javascript' src='scripts/jquery.particleground.js'></script>-->
+    <script src="/statics/login/js/bootstrap.min.js"></script>
+    <style>
+        .login-plane {
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .center-block {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .center-carousel {
+            width: 33%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .login-btn {
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .container {
+            padding-top: 4rem;
+        }
+
+        body {
+            /*background: url(image/bj.jpg)*/
+
+        }
+    </style>
+
+    <link href="/statics/login/css/animate.css" rel="stylesheet">
+</head>
+<body style="display: flex;">
+
+
+<div id="particles-js">
+    <canvas class="particles-js-canvas-el" width="1322" height="774"
+            style="width: 100%; height: 100%;">
+    </canvas>
+</div>
+<div class="container" id="particles"
+     style="position: relative; top: -4rem; margin: auto;">
+    <div class="row">
+        <div class="col-md-12">
+<!--             <h4 class="text-center animated bounceInDown">学生选课管理系统</h4> bounceInDown动画效果-->
+            <h4 class="text-center animated">用户注册</h4>
+
+
+        </div>
+        <div class="col-md-12">
+            <div class="row login-plane animated fadeIn">
+                <div class="col-md-4 center-block">
+                    <form method="post" name="login" id="login" action="">
+                        <strong>账号注册信息</strong>
+                        <div class="form-group has-feedback">
+                            <input name="" type="text" id="username" value=""
+                                   placeholder="username" class="form-control"
+                                   autocomplete="off"
+                                   onfocus="clearMsg1()"
+                                   onkeyup="value=value.replace(/[\u4e00-\u9fa5]|(^\s+)|(\s+$)/ig,'')"
+                                   maxlength="12"/> <span class="form-control-feedback fui-user"></span><span id="msg1" style="color: red"></span>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <input name="" type="password" value="" id="password"
+                                   placeholder="password" class="form-control"
+                                   autocomplete="off"
+                                   onfocus="clearMsg2()"
+                                   onkeyup="this.value=this.value.replace(/(^\s+)|(\s+$)/g,'');"
+                                   maxlength="16"/> <span class="form-control-feedback fui-lock"></span><span id="msg2" style="color: red"></span>
+                        </div>
+
+                        <div class="form-group has-feedback">
+                            <input name="" type="text" value="" id="chineseName"
+                                   placeholder="chineseName" class="form-control"
+                                   autocomplete="off"
+                                   onkeyup="this.value=this.value.replace(/(^\s+)|(\s+$)/g,'');"
+                                   maxlength="16"/> <span class="form-control-feedback fui-new"></span>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <input name="" type="text" value="" id="phoneNumber"
+                                   placeholder="phoneNumber" class="form-control"
+                                   autocomplete="off"
+                                   maxlength="16"/> <span class="form-control-feedback fui-new"></span>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <input name="" type="text" value="" id="email"
+                                   placeholder="email" class="form-control"
+                                   autocomplete="off"
+                                   maxlength="16"/> <span class="form-control-feedback fui-new"></span>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <input name="" type="text" value="" id="idCardNumber"
+                                   placeholder="idCardNumber" class="form-control"
+                                   autocomplete="off"
+                                   maxlength="16"/> <span class="form-control-feedback fui-new"></span>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <input name="" type="text" value="" id="qq"
+                                   placeholder="qq" class="form-control"
+                                   autocomplete="off"
+                                   maxlength="16"/> <span class="form-control-feedback fui-new"></span>
+                        </div>
+
+
+                        <input class="btn btn-primary btn-wide login-btn" value="REGISTER"
+                               type="button" onclick="userRegister()"/>
+                        <input class="btn btn-primary btn-wide login-btn" value="CANCEL"
+                               type="button" onclick="backToLogin()"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function userRegister() {
+        let username=$("#username").val().trim();
+        let password=$("#password").val().trim();
+        let chineseName=$("#chineseName").val().trim();
+        let phoneNumber=$("#phoneNumber").val().trim();
+        let email=$("#email").val().trim();
+        let qq=$("#qq").val().trim();
+        let idCardNumber=$("#idCardNumber").val().trim();
+        if (username==null||username==''){
+            $("#msg1").html("用户名不能为空");
+            return;
+        }
+        if (password==null||password==''){
+            $("#msg2").html("密码不能为空");
+            return;
+        };
+
+        var obj=new Object();
+        obj.username=username;
+        obj.password=password;
+        obj.phoneNumber=phoneNumber;
+        obj.chineseName=chineseName;
+        obj.email=email;
+        obj.qq=qq;
+        obj.idCardNumber=idCardNumber;
+        $.ajax({
+            type: "POST",
+            url: "register",
+            data: obj,
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+            success: function (result) {
+                if (result.code == 0) {//注册成功
+                    location.href="/login.html";
+                } else {
+                    alert(result.msg);
+                }
+            }
+        });
+    }
+    function backToLogin() {
+        location.href="/login.html";
+    }
+    function clearMsg1() {
+        $("#msg1").html("");
+    }
+    function clearMsg2() {
+        $("#msg2").html("");
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.allblue.modules.activiti.dao.ReModelDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.allblue.modules.activiti.entity.ReModelEntity" id="reModelMap">
+        <result property="id" column="ID_"/>
+        <result property="rev" column="REV_"/>
+        <result property="name" column="NAME_"/>
+        <result property="key" column="KEY_"/>
+        <result property="category" column="CATEGORY_"/>
+        <result property="createTime" column="CREATE_TIME_"/>
+        <result property="lastUpdateTime" column="LAST_UPDATE_TIME_"/>
+        <result property="version" column="VERSION_"/>
+        <result property="metaInfo" column="META_INFO_"/>
+        <result property="deploymentId" column="DEPLOYMENT_ID_"/>
+        <result property="editorSourceValueId" column="EDITOR_SOURCE_VALUE_ID_"/>
+        <result property="editorSourceExtraValueId" column="EDITOR_SOURCE_EXTRA_VALUE_ID_"/>
+        <result property="tenantId" column="TENANT_ID_"/>
+    </resultMap>
+    <select id="selectModel" resultMap="reModelMap">
+        select * from act_re_model m
+        where 1=1
+        <if test="name != null">
+            and m.NAME_ like "%"#{name}"%"
+        </if>
+        <if test="id != null">
+            and m.ID_ like "%"#{id}"%"
+        </if>
+
+    </select>
+    <select id="selectByID" resultMap="reModelMap">
+        select * from act_re_model m
+        where ID_ = #{id}
+    </select>
+    <select id="deleteByID" resultMap="reModelMap">
+        delete from act_re_model
+        where ID_ = #{id}
+    </select>
+    <select id="selectByName" resultMap="reModelMap">
+        select * from act_re_model m
+        where NAME_ = #{name}
+    </select>
+</mapper>
